@@ -1,8 +1,11 @@
 package com.assignment.myphotoapp.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
 
 public class Comment {
+    @Id
     private String id;
     private String photoId;
     private String message;

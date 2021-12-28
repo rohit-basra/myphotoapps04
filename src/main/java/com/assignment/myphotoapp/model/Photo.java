@@ -1,10 +1,12 @@
 package com.assignment.myphotoapp.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.util.Date;
 
 public class Photo {
+    @Id
     private String id;
     private String albumId;
     private String photoUrl;

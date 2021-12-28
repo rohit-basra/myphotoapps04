@@ -1,8 +1,11 @@
 package com.assignment.myphotoapp.model;
 
+import org.springframework.data.annotation.Id;
+
 import java.util.Date;
 
 public class Album {
+    @Id
     private String id;
     private String name;
     private String coverPhotoUrl;
