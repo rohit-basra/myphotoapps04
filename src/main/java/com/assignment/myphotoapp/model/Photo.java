@@ -1,8 +1,10 @@
 package com.assignment.myphotoapp.model;
 
+import com.assignment.myphotoapp.validations.CustomCreatedByValidations;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 public class Photo {
@@ -10,6 +12,8 @@ public class Photo {
     private String id;
     private String albumId;
     private String photoUrl;
+    @NotEmpty
+    @CustomCreatedByValidations
     private String createdBy;
     private Date dateCreated;
 

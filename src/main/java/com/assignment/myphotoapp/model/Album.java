@@ -1,14 +1,21 @@
 package com.assignment.myphotoapp.model;
 
+import com.assignment.myphotoapp.validations.CustomCreatedByValidations;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 public class Album {
     @Id
     private String id;
+    @Length (max = 10)
     private String name;
     private String coverPhotoUrl;
+    @NotEmpty @CustomCreatedByValidations
     private String createdBy;
     private Date dateCreated;
 

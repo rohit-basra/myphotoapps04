@@ -1,10 +1,12 @@
 package com.assignment.myphotoapp.resource;
 
+import com.assignment.myphotoapp.exceptions.RestrictedInfoException;
 import com.assignment.myphotoapp.model.User;
 import com.assignment.myphotoapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -15,7 +17,10 @@ public class UserResource {
     private UserService userService;
 
     @PostMapping//("/user")
-    public User saveUser(@RequestBody User user){
+    public User saveUser(@RequestBody @Valid User user) throws RestrictedInfoException {
+        if(user.getName().equalsIgnoreCase("root")){
+            throw new RestrictedInfoException();
+        }
         return userService.saveUser(user);
     }
 
@@ -30,7 +35,10 @@ public class UserResource {
     }
 
     @PutMapping
-    public User updateUser(@RequestBody User user){
+    public User updateUser(@RequestBody @Valid User user) throws RestrictedInfoException {
+        if(user.getName().equalsIgnoreCase("root")){
+            throw new RestrictedInfoException();
+        }
         return userService.updateUser(user);
     }
 

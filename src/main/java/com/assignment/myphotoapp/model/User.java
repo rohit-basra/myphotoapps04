@@ -1,13 +1,20 @@
 package com.assignment.myphotoapp.model;
 
+import com.assignment.myphotoapp.validations.CustomNameValidations;
 import org.springframework.data.annotation.Id;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 public class User {
 
     @Id
     private String id;
+    @NotEmpty @CustomNameValidations
     private String name;
+    @Email
     private String email;
+    @NotEmpty
     private String profilePhotoUrl;
 
     public User(String name, String email, String profilePhotoUrl) {

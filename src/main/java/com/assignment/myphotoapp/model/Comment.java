@@ -1,14 +1,21 @@
 package com.assignment.myphotoapp.model;
 
+import com.assignment.myphotoapp.validations.CustomCreatedByValidations;
+import org.hibernate.validator.constraints.Length;
 import org.springframework.data.annotation.Id;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 public class Comment {
     @Id
     private String id;
     private String photoId;
+    @Length(min=5)
     private String message;
+    @NotEmpty
+    @CustomCreatedByValidations
     private String createdBy;
     private Date dateCreated;
 
